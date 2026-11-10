@@ -1,12 +1,10 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { WithId } from './withId.type.js';
 
 @ObjectType('Achievement', {
   description: 'Одно достижение внутри места работы.',
 })
-export class Achievement {
-  @Field(() => ID)
-  id: string;
-
+export class Achievement extends WithId {
   @Field()
   text: string;
 }

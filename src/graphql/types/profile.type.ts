@@ -1,14 +1,12 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { Experience } from './experience.type.js';
 import { Link } from './link.type.js';
 import { Project } from './project.type.js';
 import { Skill } from './skill.type.js';
+import { WithId } from './withId.type.js';
 
 @ObjectType('Profile', { description: 'Публичная визитка.' })
-export class Profile {
-  @Field(() => ID)
-  id: string;
-
+export class Profile extends WithId {
   @Field({ description: 'Имя, как его показывать на визитке.' })
   name: string;
 

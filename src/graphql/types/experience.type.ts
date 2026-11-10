@@ -2,16 +2,13 @@ import {
   Field,
   GraphQLISODateTime,
   HideField,
-  ID,
   ObjectType,
 } from '@nestjs/graphql';
 import { Achievement } from './achievement.type.js';
+import { WithId } from './withId.type.js';
 
 @ObjectType('Experience')
-export class Experience {
-  @Field(() => ID)
-  id: string;
-
+export class Experience extends WithId {
   @HideField()
   profileId: string;
 

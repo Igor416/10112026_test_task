@@ -1,10 +1,8 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
+import { WithId } from './withId.type.js';
 
 @ObjectType('Project')
-export class Project {
-  @Field(() => ID)
-  id: string;
-
+export class Project extends WithId {
   @Field()
   name: string;
 

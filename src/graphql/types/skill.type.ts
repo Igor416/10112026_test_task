@@ -1,11 +1,9 @@
-import { Field, ID, ObjectType } from '@nestjs/graphql';
+import { Field, ObjectType } from '@nestjs/graphql';
 import { SkillCategory } from '../../generated/prisma/enums.js';
+import { WithId } from './withId.type.js';
 
 @ObjectType('Skill')
-export class Skill {
-  @Field(() => ID)
-  id: string;
-
+export class Skill extends WithId {
   @Field()
   name: string;
 
