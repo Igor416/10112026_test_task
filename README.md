@@ -22,15 +22,28 @@ query {
   profile {
     name
     description
-    links { type label url }
-    skills { name category }
+    links {
+      type
+      label
+      url
+    }
+    skills {
+      name
+      category
+    }
     experiences {
       company
       position
       period
-      achievements { text }
+      achievements {
+        text
+      }
     }
-    projects { name url description }
+    projects {
+      name
+      url
+      description
+    }
   }
 }
 ```
@@ -39,6 +52,15 @@ query {
 
 Для разработки поднимается только база, а Nest запускается на хосте. Порт 3000 при этом должен быть свободен, поэтому сервис `api` не стартуйте.
 
+Скопируйте `.env.example` в `.env`.
+
+| Переменная           | Зачем                                                                        |
+| -------------------- | ---------------------------------------------------------------------------- |
+| `DATABASE_URL`       | Адрес Postgres. На хосте это `localhost`, в compose — имя сервиса `postgres` |
+| `PROFILE_SLUG`       | Ключ единственной визитки. Сейчас `main`                                     |
+| `PORT`               | Порт API, по умолчанию `3000`                                                |
+| `PRISMA_LOG_QUERIES` | Печатает SQL в лог, если значение `true`                                     |
+
 ```bash
 docker compose up postgres -d
 npm install
@@ -46,15 +68,6 @@ npx prisma migrate dev
 npx prisma db seed
 npm run start:dev
 ```
-
-Скопируйте `.env.example` в `.env`.
-
-| Переменная | Зачем |
-| --- | --- |
-| `DATABASE_URL` | Адрес Postgres. На хосте это `localhost`, в compose — имя сервиса `postgres` |
-| `PROFILE_SLUG` | Ключ единственной визитки. Сейчас `main` |
-| `PORT` | Порт API, по умолчанию `3000` |
-| `PRISMA_LOG_QUERIES` | Печатает SQL в лог, если значение `true` |
 
 ## Данные
 
