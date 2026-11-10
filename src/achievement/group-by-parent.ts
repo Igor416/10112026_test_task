@@ -5,12 +5,15 @@ export function groupByParent<T>(
 ): T[][] {
   const grouped = new Map<string, T[]>();
 
-  for (const id of parentIds) {
-    grouped.set(id, []);
-  }
-
   for (const row of rows) {
-    grouped.get(parentIdOf(row))?.push(row);
+    const parentId = parentIdOf(row);
+    const group = grouped.get(parentId);
+
+    if (!group) {
+      grouped.set(parentId, []);
+    } else {
+      group.push(row);
+    }
   }
 
   return parentIds.map((id) => grouped.get(id) ?? []);
