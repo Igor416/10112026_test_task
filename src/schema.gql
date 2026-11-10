@@ -1,0 +1,86 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Одно достижение внутри места работы."""
+type Achievement {
+  id: ID!
+  text: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Experience {
+  achievements: [Achievement!]!
+  company: String!
+  endDate: DateTime
+  id: ID!
+
+  """Период в виде строки. Считается из дат, в базе не хранится."""
+  period: String!
+  position: String!
+  startDate: DateTime!
+}
+
+type Link {
+  id: ID!
+  label: String!
+  type: LinkType!
+  url: String!
+}
+
+"""Куда ведёт ссылка с визитки."""
+enum LinkType {
+  GITHUB
+  LINKEDIN
+  OTHER
+  TELEGRAM
+  WEBSITE
+}
+
+"""Публичная визитка."""
+type Profile {
+  """Короткий рассказ о себе."""
+  description: String!
+  experiences: [Experience!]!
+  id: ID!
+
+  """Куда имеет смысл перейти."""
+  links: [Link!]!
+
+  """Имя, как его показывать на визитке."""
+  name: String!
+  projects: [Project!]!
+  skills: [Skill!]!
+}
+
+type Project {
+  description: String
+  id: ID!
+  name: String!
+  url: String!
+}
+
+type Query {
+  """Визитка. Сейчас это всегда один основной профиль."""
+  profile: Profile!
+}
+
+type Skill {
+  category: SkillCategory!
+  id: ID!
+  name: String!
+}
+
+"""Группа навыка на визитке."""
+enum SkillCategory {
+  DATABASE
+  FRAMEWORK
+  LANGUAGE
+  OTHER
+  RUNTIME
+  TOOL
+}

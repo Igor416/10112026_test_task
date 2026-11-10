@@ -1,0 +1,30 @@
+query {
+  profile {
+    name
+    description
+    links {
+      type
+      label
+      url
+    }
+    skills {
+      name
+      category
+    }
+    experiences {
+      company
+      position
+      startDate
+      endDate
+      period
+      achievements {
+        text
+      }
+    }
+    projects {
+      name
+      url
+      description
+    }
+  }
+}
